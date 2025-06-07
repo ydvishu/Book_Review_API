@@ -5,7 +5,10 @@ dotenv.config();
 
 import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
-console.log("ENV FILE LOADED, JWT_SECRET =", process.env.JWT_SECRET);
+import bookRoutes from './routes/bookRoutes.js';
+import reviewRoutes from './routes/reviewRoutes.js';
+
+// console.log("ENV FILE LOADED, JWT_SECRET =", process.env.JWT_SECRET);
 
 const app = express();
 
@@ -13,6 +16,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/books', bookRoutes);
+app.use('/', reviewRoutes);
 
 // Routes
 app.get('/', (req, res) => res.send('Book Review API Running'));
